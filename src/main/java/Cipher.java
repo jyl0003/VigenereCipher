@@ -1,12 +1,12 @@
 import java.util.Scanner;
 public class Cipher {
-    public String key;
-    public int option;
-    public String output;
+    private String key;
+    private int option;
+    private String output;
 
     public static void main(String[] args) {
         Cipher cipher = new Cipher();
-        String input = "MEMORY";
+        String input;
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter input");
         System.out.print("Input = ");
@@ -23,7 +23,7 @@ public class Cipher {
         int i = copy_length;
         while (copy.length() < input.length()) {
             if (!Character.isLetter(copy.charAt(i-copy_length))) {
-
+                //Do nothing
             }
             else {
                 cipher.key = copy + copy.charAt(i - copy_length);
@@ -42,7 +42,7 @@ public class Cipher {
 
 
     }
-    public String encrypt(String input, String key) {
+    private String encrypt(String input, String key) {
         StringBuilder keys = new StringBuilder(input);
         for (int j = 0; j < input.length(); j++) {
             if (keys.charAt(j) == ' ') {
@@ -63,10 +63,9 @@ public class Cipher {
                 //k++;
             }
         }
-        String in = keys.toString();
-        return in;
+        return keys.toString();
     }
-    public String decrypt(String keys, String key) {
+    private String decrypt(String keys, String key) {
         StringBuilder newInput = new StringBuilder(key);
         for (int j = 0; j < keys.length(); j++) {
             if (newInput.charAt(j) == ' ') {
@@ -87,7 +86,6 @@ public class Cipher {
                 //k++;
             }
         }
-        String in = newInput.toString();
-        return in;
+        return newInput.toString();
     }
 }
